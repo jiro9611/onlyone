@@ -32,6 +32,8 @@
 
 
 
+<p id="demo"></p>
+
 <div id="dateSel">
 	<form name="myForm" onsubmit="return false">
 		<p><select size="1" name="D1" onchange="changeDate()">
@@ -68,23 +70,30 @@
 		document.myForm.D2.outerHTML=TempStr+'</select>';
 		}
 		};
-	</script>
-	<script language="javascript">
 
 		function dateNum(){
-			var month1 = document.getElementById("myForm.D1.");
-			var strUser = month1.option[month1.selectedIndexle].value;
-			alert(strUser);
+			var month1 = document.getElementById("D1");
+			var strUser = month1.option[month1.selectedIndex];
+			
+
+			alert('hello!');
 		};
-		dateNum();
+
+		function myFunction() {
+    		
+    		var plusD1 = document.myForm.D1.selectedIndex + 1;
+    		console.log(plusD1);
+
+    		console.log(myForm.D2.value);
+		};
+
 
 	</script>
-
-
-
 </div>
 
-<button id="confirmInfo" type="button" onclick="alert('Hello world!')">生日選定，按下看結果!</button>
+<input id="confirmInfo" type="button" value="生日選定，按下看結果!" onclick="dateNum();" />
+
+<button onclick="myFunction()">Click me</button>
 
 <div id="picBox">
 	<canvas id="myCanvas" width="200" height="200" style="border:1px solid #c3c3c3;">
