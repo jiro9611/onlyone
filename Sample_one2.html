@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Onlyone FB app</title>
+
+<title>Onlyone FB app</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />`
+<script type="text/javascript" language="javascript" src="../script/temp.js"></script>
+
 <style type="text/css">
 	body {
 		margin: 0 auto;
@@ -17,10 +20,7 @@
 	#picBox {
 
 	}
-/*	#myCanvas {
-		position: relative;
-		margin-top: 50px;
-	}*/
+
 
 </style>
 </head>
@@ -30,9 +30,6 @@
 	<h3>請選擇愛人的生日</h3>
 </div>
 
-
-
-<p id="demo"></p>
 
 <div id="dateSel">
 	<form name="myForm" onsubmit="return false">
@@ -71,33 +68,43 @@
 		}
 		};
 
-		function dateNum(){
-			var month1 = document.getElementById("D1");
-			var strUser = month1.option[month1.selectedIndex];
-			
 
-			alert('hello!');
-		};
+		function getAstro(pD11,pD22){    
+		    return "魔羯水瓶双鱼牡羊金牛雙子巨蟹狮子處女天秤天蝎射手魔羯".substr(pD11*2-(pD22<"102123444543".charAt(pD11-1)- -19)*2,2);
+		}
 
-		function myFunction() {
+
+		function birthDay() {
     		
     		var plusD1 = document.myForm.D1.selectedIndex + 1;
-    		console.log(plusD1);
+    		var plusD2 = myForm.D2.value;
+    		var pD11 = parseInt(plusD1);
+    		var pD22 = parseInt(plusD2);
 
-    		console.log(myForm.D2.value);
+    		// console.log(typeof(pD11)); pD11 is a number
+    		var resultStar = pD11+"月"+pD22+"日"+ getAstro(pD11,pD22);
+
+			
+			
+			var allStr = String(resultStar);
+			document.write(resultStar);
+			// alert(typeof(resultStar));
+
 		};
+
+		// var finalResult = birthDay().toString();
+
 
 
 	</script>
 </div>
 
-<input id="confirmInfo" type="button" value="生日選定，按下看結果!" onclick="dateNum();" />
+<button id="pppp" onclick="birthDay()">生日選定，按下看結果!</button>
 
-<button onclick="myFunction()">Click me</button>
 
 <div id="picBox">
-	<canvas id="myCanvas" width="200" height="200" style="border:1px solid #c3c3c3;">
-	Your browser does not support the HTML5 canvas tag.
+	<canvas id="myCanvas" width="500" height="500" style="border:1px solid #c3c3c3;">
+	Your browser does not support the HTML5 canvas tag, please install the newest google chrome or Firefox.
 	</canvas>
 </div>
 
@@ -112,9 +119,28 @@
 		ctx.fillStyle = "rgba( 0, 146, 38, 0.5)"; 
 		ctx.fillRect(58, 74, 125, 100); 
 		ctx.fillStyle = "rgba( 0, 0, 0, 1)"; // black color 
-		ctx.fillText("Gloomyfish - Demo", 50, 50); 
+		ctx.fillText("allStr", 50, 50); 
 
 </script>
 
 </body>
 </html>
+
+
+<!-- 您好，我個人的建議是，這樣的寫法不太好，最好能夠將 js 的部份獨立出一個 js檔，在 html 裡面只留純粹的 html 內容，這樣的話，未來比較方便和美工設計人員配合設計網頁。在網頁裡可以嘗試留個窗口，例如： <div id ="panel1"></div> ，然後在 js 裡的程式 透過 var select1 = document.createElement("select");
+
+document.getElementById("panel1").appendChild(select1); 的方式加 元件進去，這樣網頁會看起來好看一點，而程式碼的部份也會容易管理一些。 -->
+<!-- 		 var constellation = {
+		     con1:"魔羯座",	12月21日  ～　1月20日
+		     con2:"水瓶座",	1月21日    ～　2月19日
+		     con3:"雙魚座",	2月20日   ～　3月20日
+		     con4:"白羊座",	3月21日　～　4月19日
+		     con5:"金牛座",	4月20日　～　5月20日
+		     con6:"雙子座",	5月21日　～　6月21日
+		     con7:"巨蟹座",	6月22日　～　7月22日
+		     con8:"獅子座",	7月23日　～　8月22日
+		     con9:"處女座",	8月23日　～　9月22日
+		     con10:"天秤座",	9月23日　～　10月23日
+		     con11:"天蠍座",	10月24日  ～　11月21日
+		     con12:"射手座",	11月22日  ～　12月20日
+		 }; -->
