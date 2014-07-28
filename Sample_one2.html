@@ -176,20 +176,29 @@
 
 	function popUp() {
 			birthDay();
+			imageLoader(cImageSrc, 'startAnimation()');
+
    			// document.getElementById('checkResult').style.display = 'block';
    			document.getElementById('backBlack').style.display = 'block';
    			document.getElementById('picBox').style.display = 'block';
    			$( "#picBox" ).hide().delay( 3500 ).fadeIn( 800 );
+   			//The following code starts the animation
+   			
+   			$("#loaderImage").delay(3000).fadeOut(600);
+   			document.getElementById('loaderImage').style.display = 'block';//It is help preloader re-start again. without this line, icon only show up in first time.
+			
 
 	};
 
 
 
 	function popOUT() {
+		stopAnimation();
+			// imageLoader(cImageSrc, 'startAnimation()');
 		   	// document.getElementById('checkResult').style.display = 'none';
     		document.getElementById('backBlack').style.display = 'none';
     		document.getElementById('picBox').style.display = 'none';
-    		ctx.clearRect(0, 0, c.width, c.height); //clear all canvas old img, otherwise it will remain every old img under new img. 
+    		ctx.clearRect(0, 0, c.width, c.height); //clear all canvas old img, otherwise it will remain every old img under new img.
 
 	};
 
@@ -279,8 +288,7 @@
 		genImage.src=s;
 	}
 	
-	//The following code starts the animation
-	imageLoader(cImageSrc, 'startAnimation()');
+	
 </script>
 
 
