@@ -1,30 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" href="http://www.jacklmoore.com/colorbox/example1/colorbox.css" /> <!--A very beautiful light box css-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <title>Onlyone FB app</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />`
-<script type="text/javascript" language="javascript" src="../script/temp.js"></script>
-
-<style type="text/css">
-	body {
-		margin: 0 auto;
-		text-align: center;
-	}
-
-	#confirmInfo {
-		position: relative;
-		vertical-align: top;
-	}
-
-	#picBox {
-
-	}
-
-
-</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<!-- <script type="text/javascript" language="javascript" src="../script/temp.js"></script> -->
 </head>
 <body>
+
+<!-- <div id="checkResult"></div> -->
+<div id="backBlack" onclick="popOUT()"></div>
+
 <div id="header">
 	<h1>送給愛人最適合的花</h1>
 	<h3>請選擇愛人的生日</h3>
@@ -32,8 +20,8 @@
 
 
 <div id="dateSel">
-	<form name="myForm" onsubmit="return false">
-		<p><select size="1" name="D1" onchange="changeDate()">
+	<form id="myForm1" name="myForm" onsubmit="return false" >
+		<p><select size="1" name="D1"  onchange="changeDate()">
 			<script language="javascript"><!--
 				for(i=0;i<12;i++){
 				document.write('<option value="'+i+'">'+(i+1)+'</option>');
@@ -42,7 +30,7 @@
 			</script>
 		</select>月
 
-		<select size="1" name="D2">
+		<select size="1" name="D2" >
 			<script language="javascript"><!--
 				for(i=1;i<=31;i++){
 				document.write('<option value="'+i+'">'+i+'</option>');
@@ -70,7 +58,7 @@
 
 
 		function getAstro(pD11,pD22){    
-		    return "魔羯水瓶双鱼牡羊金牛雙子巨蟹狮子處女天秤天蝎射手魔羯".substr(pD11*2-(pD22<"102123444543".charAt(pD11-1)- -19)*2,2);
+		    return "魔羯水瓶雙鱼牡羊金牛雙子巨蟹獅子處女天秤天蠍射手魔羯".substr(pD11*2-(pD22<"102123444543".charAt(pD11-1)- -19)*2,2);
 		}
 
 
@@ -84,44 +72,217 @@
     		// console.log(typeof(pD11)); pD11 is a number
     		var resultStar = pD11+"月"+pD22+"日"+ getAstro(pD11,pD22);
 
+
+				ctx.fillStyle = "rgba( 255, 255, 255, 1)"; 
+				ctx.fillRect(0, 0, 420, 480); 
+
+				flowSelec(pD11,pD22);
 			
-			
-			var allStr = String(resultStar);
-			document.write(resultStar);
-			// alert(typeof(resultStar));
+				// var allStr = String(resultStar);
+				// document.write(resultStar);
+				// alert(typeof(resultStar));
+				// ctx.clearRect ( 0 , 0, 500, 500);
+				
+				// ctx.drawImage(img1,10,10);
+
+				// ctx.fillStyle = "rgba(125, 46, 138, 0.5)"; 
+				// ctx.fillRect(25,25,100,200); 
+
+				ctx.fillStyle = "rgba( 0, 0, 0, 1)"; // black color 
+				ctx.font = "30px SimHei, Arial, Helvetica, sans-serif";
+				ctx.fillText(resultStar, 130, 455); 
 
 		};
 
 		// var finalResult = birthDay().toString();
 
+		function flowSelec(pD11,pD22){
+			if((pD11==12 && (21<=pD22 && pD22 <=31)) || (pD11==1 && pD22 <= 20)){
+				ctx.drawImage(img1,10,10);
+				// console.log("ya1")
+			}else if((pD11==1 && (21<=pD22 && pD22<=31)) || (pD11==2 && pD22 <=19)){
+				ctx.drawImage(img2,10,10);
+				// console.log("ya2")
+			}else if((pD11==2 && (20<=pD22 && pD22<=28)) || (pD11==3 && pD22 <=20)){
+				ctx.drawImage(img3,10,10);
+				// console.log("ya3")
+			}else if((pD11==3 && (21<=pD22 && pD22<=31)) || (pD11==4 && pD22 <=19)){
+				ctx.drawImage(img4,10,10);
+			}else if((pD11==4 && (20<=pD22 && pD22<=30)) || (pD11==5 && pD22 <=20)){
+				ctx.drawImage(img5,10,10);
+			}else if((pD11==5 && (21<=pD22 && pD22<=31)) || (pD11==6 && pD22 <=21)){
+				ctx.drawImage(img6,10,10);
+			}else if((pD11==6 && (22<=pD22 && pD22<=30)) || (pD11==7 && pD22 <=22)){
+				ctx.drawImage(img7,10,10);
+			}else if((pD11==7 && (23<=pD22 && pD22<=31)) || (pD11==8 && pD22 <=22)){
+				ctx.drawImage(img8,10,10);
+			}else if((pD11==8 && (23<=pD22 && pD22<=31)) || (pD11==9 && pD22 <=22)){
+				ctx.drawImage(img9,10,10);
+			}else if((pD11==9 && (23<=pD22 && pD22<=30)) || (pD11==10 && pD22 <=23)){
+				ctx.drawImage(img10,10,10);
+			}else if((pD11==10 && (24<=pD22 && pD22<=31)) || (pD11==11 && pD22 <=21)){
+				ctx.drawImage(img11,10,10);
+			}else{
+				ctx.drawImage(img12,10,10);
+			}
+		}
 
+		// flowSelec(1,22);
+
+	 		 // var constellation = {
+		   //   con1:"魔羯座",	12月21日  ～　1月20日
+		   //   con2:"水瓶座",	1月21日    ～　2月19日
+		   //   con3:"雙魚座",	2月20日   ～　3月20日
+		   //   con4:"白羊座",	3月21日　～　4月19日
+		   //   con5:"金牛座",	4月20日　～　5月20日
+		   //   con6:"雙子座",	5月21日　～　6月21日
+		   //   con7:"巨蟹座",	6月22日　～　7月22日
+		   //   con8:"獅子座",	7月23日　～　8月22日
+		   //   con9:"處女座",	8月23日　～　9月22日
+		   //   con10:"天秤座",	9月23日　～　10月23日
+		   //   con11:"天蠍座",	10月24日  ～　11月21日
+		   //   con12:"射手座",	11月22日  ～　12月20日
+		 	 // };
 
 	</script>
 </div>
 
-<button id="pppp" onclick="birthDay()">生日選定，按下看結果!</button>
+<!-- <a style="visibility: hidden; display: none;" id="begin_button" class="next_button button scheme" href="javascript:void(0);">生日選定，開始測驗</a> -->
+<a style="visibility: visible;" id="login_button" class="next_button button scheme" href="javascript:void(0);" onclick="popUp()">生日選定，開始測驗</a>
 
 
-<div id="picBox">
-	<canvas id="myCanvas" width="500" height="500" style="border:1px solid #c3c3c3;">
+<div id="picBox" class="delayPic">      <!--solution: http://jsfiddle.net/vDLA7/  http://stackoverflow.com/questions/15772529/load-div-one-by-one-with-a-delay-using-jquery-->
+	<canvas id="myCanvas" width="420" height="480" style="border:1px solid #c3c3c3;">
 	Your browser does not support the HTML5 canvas tag, please install the newest google chrome or Firefox.
 	</canvas>
+
 </div>
 
+<img id="flow1" src="images/001.jpg" alt="The Scream" width="220" height="277">
+<img id="flow2" src="images/002-2.jpg" alt="The Scream" width="220" height="277">
+<img id="flow3" src="images/003.jpg" alt="The Scream" width="220" height="277">
+<img id="flow4" src="images/004.jpg" alt="The Scream" width="220" height="277">
+<img id="flow5" src="images/005.jpg" alt="The Scream" width="220" height="277">
+<img id="flow6" src="images/006.jpg" alt="The Scream" width="220" height="277">
+<img id="flow7" src="images/007.jpg" alt="The Scream" width="220" height="277">
+<img id="flow8" src="images/008.jpg" alt="The Scream" width="220" height="277">
+<img id="flow9" src="images/009.jpg" alt="The Scream" width="220" height="277">
+<img id="flow10" src="images/010.jpg" alt="The Scream" width="220" height="277">
+<img id="flow11" src="images/011.jpg" alt="The Scream" width="220" height="277">
+<img id="flow12" src="images/012.jpg" alt="The Scream" width="220" height="277">
 
+<script>
+	
+
+	function popUp() {
+			birthDay();
+   			// document.getElementById('checkResult').style.display = 'block';
+   			document.getElementById('backBlack').style.display = 'block';
+   			document.getElementById('picBox').style.display = 'block';
+   			$( "#picBox" ).hide().delay( 3500 ).fadeIn( 800 );
+
+	};
+
+
+
+	function popOUT() {
+		   	// document.getElementById('checkResult').style.display = 'none';
+    		document.getElementById('backBlack').style.display = 'none';
+    		document.getElementById('picBox').style.display = 'none';
+    		ctx.clearRect(0, 0, c.width, c.height); //clear all canvas old img, otherwise it will remain every old img under new img. 
+
+	};
+
+
+</script>
 
 <script>
 
 	var c = document.getElementById("myCanvas");
 	var ctx = c.getContext("2d");
-		ctx.fillStyle = "rgba(125, 46, 138, 0.5)"; 
-		ctx.fillRect(25,25,100,200); 
-		ctx.fillStyle = "rgba( 0, 146, 38, 0.5)"; 
-		ctx.fillRect(58, 74, 125, 100); 
-		ctx.fillStyle = "rgba( 0, 0, 0, 1)"; // black color 
-		ctx.fillText("allStr", 50, 50); 
+	var img1 = document.getElementById("flow1");
+	var img2 = document.getElementById("flow2");
+	var img3 = document.getElementById("flow3");
+	var img4 = document.getElementById("flow4");
+	var img5 = document.getElementById("flow5");
+	var img6 = document.getElementById("flow6");
+	var img7 = document.getElementById("flow7");
+	var img8 = document.getElementById("flow8");
+	var img9 = document.getElementById("flow9");
+	var img10 = document.getElementById("flow10");
+	var img11 = document.getElementById("flow11");
+	var img12 = document.getElementById("flow12");
+
 
 </script>
+<center>
+<div id="loaderImage"></div>
+</center>
+<script type="text/javascript">
+	var cSpeed=4;
+	var cWidth=40;
+	var cHeight=43;
+	var cTotalFrames=29;
+	var cFrameWidth=40;
+	var cImageSrc='images/sprites.gif';
+	
+	var cImageTimeout=false;
+	var cIndex=0;
+	var cXpos=0;
+	var cPreloaderTimeout=false;
+	var SECONDS_BETWEEN_FRAMES=0;
+	
+	function startAnimation(){
+		
+		document.getElementById('loaderImage').style.backgroundImage='url('+cImageSrc+')';
+		document.getElementById('loaderImage').style.width=cWidth+'px';
+		document.getElementById('loaderImage').style.height=cHeight+'px';
+		
+		//FPS = Math.round(100/(maxSpeed+2-speed));
+		FPS = Math.round(100/cSpeed);
+		SECONDS_BETWEEN_FRAMES = 1 / FPS;
+		
+		cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES/1000);
+		
+	}
+	
+	function continueAnimation(){
+		
+		cXpos += cFrameWidth;
+		//increase the index so we know which frame of our animation we are currently on
+		cIndex += 1;
+		 
+		//if our cIndex is higher than our total number of frames, we're at the end and should restart
+		if (cIndex >= cTotalFrames) {
+			cXpos =0;
+			cIndex=0;
+		}
+		
+		if(document.getElementById('loaderImage'))
+			document.getElementById('loaderImage').style.backgroundPosition=(-cXpos)+'px 0';
+		
+		cPreloaderTimeout=setTimeout('continueAnimation()', SECONDS_BETWEEN_FRAMES*1000);
+	}
+	
+	function stopAnimation(){//stops animation
+		clearTimeout(cPreloaderTimeout);
+		cPreloaderTimeout=false;
+	}
+	
+	function imageLoader(s, fun)//Pre-loads the sprites image
+	{
+		clearTimeout(cImageTimeout);
+		cImageTimeout=0;
+		genImage = new Image();
+		genImage.onload=function (){cImageTimeout=setTimeout(fun, 0)};
+		genImage.onerror=new Function('alert(\'Could not load the image\')');
+		genImage.src=s;
+	}
+	
+	//The following code starts the animation
+	imageLoader(cImageSrc, 'startAnimation()');
+</script>
+
 
 </body>
 </html>
